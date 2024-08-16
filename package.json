@@ -1,0 +1,74 @@
+{
+  "name": "playwright-helper",
+  "version": "1.0.0",
+  "description": "Playwright Helper Library for testing",
+  "main": "./dist/src/playwright-lib/index.js",
+  "types": "./dist/src/playwright-lib/index.d.ts",
+  "projectType": "library",
+  "exports": {
+    ".": "./dist/src/playwright-lib/index.js",
+    "./constants": "./dist/src/playwright-lib/constant/index.js",
+    "./custom-logger": "./dist/src/playwright-lib/utils/custom-logger.js",
+    "./msTeamReports": "./dist/src/playwright-lib/utils/teamSummaryReport.js",
+    "./api": "./dist/src/playwright-lib/api/index.js",
+    "./splunk-logger": "./dist/src/playwright-lib/utils/splunk-logger.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": {
+    "name": "Vikas Yadav",
+    "email": "dnsvikas.wins@gmail.com"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "testing"
+  ],
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "bump:patch": "npm version patch -m 'Patch update to %s'",
+    "bump:minor": "npm version minor -m 'Minor update to %s'",
+    "bump:major": "npm version major -m 'Major update to %s'",
+    "report": "playwright show-report .tmp/report",
+    "ui": "playwright test --ui-port 0",
+    "trace": "playwright show-trace --port 0",
+    "lint": "eslint 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts'",
+    "lint:fix": "eslint 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts' --fix",
+    "build": "tsc -p tsconfig.json",
+    "release": "npm run build",
+    "format": "prettier --write 'tests/**/*.ts' 'src/**/*.ts' 'playwright.config.ts' '**/*.json' '**/*.md' '!package-lock.json' '!dist/**/*' '!build/**/*'",
+    "ready": "rimraf dist node_modules package-lock.json && npm i",
+    "clean": "rimraf dist node_modules package-lock.json playwright-report test-results",
+    "docs": "typedoc --entryPoints src/playwright-lib --out docs --exclude \"**/node_modules/**/*\" --readme none"
+  },
+  "devDependencies": {
+    "@playwright/test": "~1.46.0",
+    "@reportportal/agent-js-playwright": "~5.1.9",
+    "@reportportal/client-javascript": "~5.1.4",
+    "@semantic-release/changelog": "~6.0.3",
+    "@semantic-release/commit-analyzer": "~13.0.0",
+    "@semantic-release/git": "~10.0.1",
+    "@types/node": "~22.3.0",
+    "ajv": "^8.17.1",
+    "cross-env": "^7.0.3",
+    "docdash": "~2.0.2",
+    "dotenv": "^16.4.5",
+    "eslint-config-prettier": "~9.1.0",
+    "eslint-import-resolver-typescript": "~3.6.1",
+    "eslint-plugin-import": "~2.29.1",
+    "eslint-plugin-jsdoc": "~50.2.1",
+    "eslint-plugin-playwright": "^1.6.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "genson-js": "^0.0.8",
+    "playwright-ctrf-json-reporter": "~0.0.15",
+    "rimraf": "~6.0.1",
+    "semantic-release": "~24.0.0",
+    "typedoc": "~0.26.5",
+    "typescript": "~5.5.4",
+    "winston": "~3.14.1"
+  }
+}
